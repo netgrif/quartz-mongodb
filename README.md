@@ -1,11 +1,9 @@
 # A MongoDB-based store for Quartz
 
-## Be Aware of Abandonware
+## Disclaimer
 
-**This project IS NO LONGER MAINTAINED**. If you plan on using it, be ready to address any issues
-on your own and produce your own releases. Issues that ask others to do something
-will be ignored. Pull requests may be merged on a very random schedule.
-
+This project is fork of repository https://github.com/michaelklishin/quartz-mongodb to fix some issues with quartz usage with MongoDB as a persistent layer.
+This repository is work in progress and should not be used outside Netgrif or in production environment.
 
 ## What is This?
 
