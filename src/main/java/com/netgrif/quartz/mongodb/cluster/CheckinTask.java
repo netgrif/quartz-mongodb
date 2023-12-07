@@ -32,7 +32,7 @@ public class CheckinTask implements Runnable {
         } catch (MongoWriteConcernException e) {
             handleWriteConcernException(e);
         } catch (Exception e) {
-            log.error("TOTOK: Neočakávaná chyba počas check-in: " + e.getMessage(), e);
+            log.error("Unexpected error during check-in: " + e.getMessage(), e);
             //errorHandler.run();  //TODO: ups..
         }
     }
@@ -46,12 +46,12 @@ public class CheckinTask implements Runnable {
                 run();
             } catch (InterruptedException ie) {
                 Thread.currentThread().interrupt();
-                log.error("TOTOK: Thread interrupted during retry delay", ie);
+                log.error("Thread interrupted during retry delay", ie);
             } catch (Exception ee) {
-                log.error("TOTOK: shit.." +ee.getMessage() , ee);
+                log.error("Hups..." +ee.getMessage() , ee);
             }
         } else {
-            log.error("TOTOK: Maximum number of attempts reached. Unable to complete check-in.", e);
+            log.error("Maximum number of attempts reached. Unable to complete check-in.", e);
             errorHandler.run();
         }
     }
