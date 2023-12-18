@@ -1,4 +1,4 @@
-    package com.netgrif.quartz.mongodb.cluster;
+package com.netgrif.quartz.mongodb.cluster;
 
 import com.mongodb.MongoWriteConcernException;
 import com.netgrif.quartz.mongodb.dao.SchedulerDao;
