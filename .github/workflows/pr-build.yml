@@ -34,6 +34,11 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     timeout-minutes: 200
+    services:
+      mongo:
+        image: mongo:4.4
+        ports:
+          - 27017:27017
     steps:
 
       - uses: actions/checkout@v3
