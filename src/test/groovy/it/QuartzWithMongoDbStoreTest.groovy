@@ -1,7 +1,7 @@
 package it
 
-import com.novemberain.quartz.mongodb.MongoHelper
-import com.novemberain.quartz.mongodb.QuartzHelper
+import com.netgrif.quartz.mongodb.MongoHelper
+import com.netgrif.quartz.mongodb.QuartzHelper
 import org.quartz.CalendarIntervalScheduleBuilder
 import org.quartz.Job
 import org.quartz.JobBuilder
@@ -22,7 +22,7 @@ import spock.lang.Specification
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.atomic.AtomicInteger
 
-import static com.novemberain.quartz.mongodb.QuartzHelper.inSeconds
+import static com.netgrif.quartz.mongodb.QuartzHelper.inSeconds
 import static org.quartz.impl.matchers.GroupMatcher.groupEquals
 
 /**
