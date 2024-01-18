@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FailoverTest {
 
-    private static final long quartzFinishWaittimeSecs = 2L;
+    private static final long QUARTZ_FINISH_WAITTIME_SECS = 2L;
 
 
     @BeforeEach
@@ -88,7 +88,7 @@ public class FailoverTest {
 
         List<Scheduler> cluster = QuartzHelper.createCluster("single-node");
 
-        TimeUnit.SECONDS.sleep(quartzFinishWaittimeSecs);
+        TimeUnit.SECONDS.sleep(QUARTZ_FINISH_WAITTIME_SECS);
 
         assertEquals(0, MongoHelper.getCount("triggers"));
         assertEquals(0, MongoHelper.getCount("locks"));
@@ -107,7 +107,7 @@ public class FailoverTest {
         DeadJob.job2RunSignaler.await(2, TimeUnit.SECONDS);
 
         assertEquals(0, DeadJob.job2RunSignaler.getCount());
-        TimeUnit.SECONDS.sleep(quartzFinishWaittimeSecs);
+        TimeUnit.SECONDS.sleep(QUARTZ_FINISH_WAITTIME_SECS);
         QuartzHelper.shutdown(cluster);
     }
 
@@ -122,7 +122,7 @@ public class FailoverTest {
         DeadJob.job3RunSignaler.await(2, TimeUnit.SECONDS);
 
         assertEquals(0, DeadJob.job3RunSignaler.getCount());
-        TimeUnit.SECONDS.sleep(quartzFinishWaittimeSecs);
+        TimeUnit.SECONDS.sleep(QUARTZ_FINISH_WAITTIME_SECS);
         assertEquals(0, MongoHelper.getCount("triggers"));
         assertEquals(0, MongoHelper.getCount("jobs"));
         assertEquals(0, MongoHelper.getCount("locks"));
@@ -145,7 +145,7 @@ public class FailoverTest {
         DeadJob.job4RunSignaler.await(5, TimeUnit.SECONDS);
 
         assertEquals(0, DeadJob.job4RunSignaler.getCount());
-        TimeUnit.SECONDS.sleep(quartzFinishWaittimeSecs);
+        TimeUnit.SECONDS.sleep(QUARTZ_FINISH_WAITTIME_SECS);
         assertEquals(0, MongoHelper.getCount("triggers"));
         assertEquals(0, MongoHelper.getCount("jobs"));
         assertEquals(0, MongoHelper.getCount("locks"));

@@ -42,8 +42,8 @@ public class MongoStoreAssembler {
 
     public void build(MongoDBJobStore jobStore, ClassLoadHelper loadHelper,
                       SchedulerSignaler signaler, Properties quartzProps)
-        throws SchedulerConfigException, ClassNotFoundException,
-        IllegalAccessException, InstantiationException {
+            throws SchedulerConfigException, ClassNotFoundException,
+            IllegalAccessException, InstantiationException {
         mongoConnector = createMongoConnector(jobStore);
 
         JobDataConverter jobDataConverter = new JobDataConverter(jobStore.isJobDataAsBase64());
@@ -83,17 +83,17 @@ public class MongoStoreAssembler {
 
     private CheckinExecutor createCheckinExecutor(MongoDBJobStore jobStore, ClassLoadHelper loadHelper,
                                                   Properties quartzProps)
-        throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+            throws ClassNotFoundException, InstantiationException, IllegalAccessException {
         return new CheckinExecutor(createCheckinTask(jobStore, loadHelper),
                 jobStore.clusterCheckinIntervalMillis, jobStore.instanceId);
     }
 
     private Runnable createCheckinTask(MongoDBJobStore jobStore, ClassLoadHelper loadHelper)
-        throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+            throws ClassNotFoundException, IllegalAccessException, InstantiationException {
         Runnable errorHandler;
         Class aClass;
         if (jobStore.getCheckInErrorHandler() == null) {
-            // TOTO je blbe :/
+            // TODO: Refactor
             aClass = KamikazeErrorHandler.class;
         } else {
             aClass = loadHelper.loadClass(jobStore.getCheckInErrorHandler());
@@ -121,7 +121,7 @@ public class MongoStoreAssembler {
 
     private LockManager createLockManager(MongoDBJobStore jobStore) {
         ExpiryCalculator expiryCalculator = new ExpiryCalculator(schedulerDao,
-                Clock.SYSTEM_CLOCK, jobStore.jobTimeoutMillis, jobStore.triggerTimeoutMillis,jobStore.isClustered());
+                Clock.SYSTEM_CLOCK, jobStore.jobTimeoutMillis, jobStore.triggerTimeoutMillis, jobStore.isClustered());
         return new LockManager(locksDao, expiryCalculator);
     }
 

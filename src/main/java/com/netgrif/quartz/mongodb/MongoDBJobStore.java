@@ -14,8 +14,6 @@ import org.quartz.Trigger.TriggerState;
 import org.quartz.impl.matchers.GroupMatcher;
 import org.quartz.spi.*;
 import org.quartz.Calendar;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.util.*;
@@ -23,9 +21,6 @@ import java.util.Map.Entry;
 import java.util.concurrent.TimeUnit;
 
 public class MongoDBJobStore implements JobStore, Constants {
-
-    private static final Logger log = LoggerFactory.getLogger(MongoDBJobStore.class);
-
 
     private MongoStoreAssembler assembler = new MongoStoreAssembler();
 
@@ -102,7 +97,6 @@ public class MongoDBJobStore implements JobStore, Constants {
     public void initialize(ClassLoadHelper loadHelper, SchedulerSignaler signaler)
             throws SchedulerConfigException {
         Properties props = loadProperties(loadHelper);
-        log.info("Init MongoQuartz connector");
         try {
             assembler.build(this, loadHelper, signaler, props);
         } catch (ClassNotFoundException | IllegalAccessException | InstantiationException e) {
