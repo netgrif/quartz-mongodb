@@ -6,7 +6,7 @@
 
     <groupId>com.netgrif</groupId>
     <artifactId>quartz-mongodb-connector</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <packaging>jar</packaging>
 
     <name>NETGRIF Quartz MongoDB</name>
@@ -18,6 +18,7 @@
         <maven.compiler.target>11</maven.compiler.target>
         <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <mongodb.version>5.6.4</mongodb.version>
     </properties>
 
     <licenses>
@@ -53,6 +54,23 @@
         <url>https://github.com/netgrif/quartz-mongodb/issues</url>
     </issueManagement>
 
+    <dependencyManagement>
+        <dependencies>
+            <!-- org.quartz-scheduler ak bude fixnuty!  -->
+            <dependency>
+                <groupId>com.mchange</groupId>
+                <artifactId>mchange-commons-java</artifactId>
+                <version>0.4.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.mchange</groupId>
+                <artifactId>c3p0</artifactId>
+                <version>0.12.0</version>
+            </dependency>
+            <!-- org.quartz-scheduler ak bude fixnuty!  -->
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
         <dependency>
             <groupId>org.quartz-scheduler</groupId>
@@ -63,7 +81,7 @@
         <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>mongodb-driver-sync</artifactId>
-            <version>4.7.1</version>
+            <version>${mongodb.version}</version>
         </dependency>
 
         <dependency>
